@@ -13,7 +13,7 @@ class Contenedor{
     
     
 
-    async obtenerProductos () {
+/*     async obtenerProductos () {
         try{
             //await validateExisteFile();
             const dato = await fs.promises.readFile(nombreArchivo, 'utf-8');
@@ -22,11 +22,11 @@ class Contenedor{
         }catch(error){
             console.log("Erroree")
         }        
-    }
+    } */
     
     async guardarProductos (productos){
         try{        
-        //await validateExistFile();
+        //await validateExisteFile();
         const data = JSON.stringify(productos, null, '\t')
         await fs.promises.writeFile(this.nombreArchivo, data)
         }catch(error){
@@ -127,12 +127,7 @@ const archivo = new Contenedor(nombreArchivo);
  // Llamado a getAll
     
  const main = async () => {
-     try{    
-        let exist = await archivo.validateExisteFile();
-        if (exist === "OK") {
-            console.log("El archivo ya existe!");
-        }
-    
+     try{           
         let products = await archivo.getAll(); 
         console.log(products);
 
