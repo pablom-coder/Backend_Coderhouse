@@ -1,4 +1,3 @@
-
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -6,6 +5,7 @@ const app = express();
 const PORT = 8080;
 
 //rutas
+
 app.get('/',(req,res)=>{
     res.json('Bienvenidos.')
 });
@@ -24,6 +24,7 @@ app.get('/productoRandom',(req,res)=>{
         res.json(unProducto[random(0,unProducto.length-1)]);
     })
 });
+
 const server = app.listen(PORT, ()=>{
     console.log(`Servidor http escuchando en el puerto ${server.address().port}`);
 });
@@ -32,7 +33,7 @@ server.on("error", error => console.log(`Error en servidor ${error}`))
 class Contenedor {
     constructor(archivo){
 
-        this.archivo =`./${archivo}.json`;       
+        this.archivo = `${__dirname}/${archivo}.json`;       
     }
     async obtenerJson(){
         const data = await fs.promises.readFile(this.archivo,'utf-8');
@@ -68,14 +69,15 @@ class Contenedor {
     async deleteById(id){
         const productos = await this.obtenerJson();
         productos.splice(id - 1,1);
-        console.log(`Se removio el producto con id:${id} de sus productos`);
+        console.log(`Se elimino el producto con id:${id}.`);
         return await this.actualizarArchivo(productos);
     }
     async deleteAll(){
         const productos = await this.obtenerJson();
         productos.splice(0);
-        console.log('Se borraron todos los productos de su lista');
+        console.log('Se eliminaron los productos de la lista');
         return await this.actualizarArchivo(productos);
     }
 }
+
 const productos = new Contenedor('productos');

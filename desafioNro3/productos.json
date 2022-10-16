@@ -6,13 +6,12 @@
     },
     {
         "title": "Jabon tocador", 
-        "price": 250, 
+        "price": 80, 
         "id": 2
     },
     {
         "title": "Pasta dental Oral B", 
-        "price": 250, 
+        "price": 190, 
         "id": 3
     }
-
 ]
