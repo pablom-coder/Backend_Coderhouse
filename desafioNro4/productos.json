@@ -1,0 +1,44 @@
+[
+	{
+		"title": "Shampoo",
+		"price": 250,
+		"thumbnail": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBESEhISEhESEhIVEhISEhISGBESEhISGRgeGhgUGBocIS8lHh4rHxgYJjgnKy81NTU1HCQ7QDszQC40NT8BDAwMEA8QHxISHjYrISs9ODQxNDQxNDU0Nz80Pz02MTExNDE0NDQ0ND00Pz80MTExNDQ2NDQ0NDQ0NDY0MTg4NP/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgEEBQcIAwL/xABLEAACAQMBAwYJBwoEBQUAAAABAgADBBESBSExBgcTMkFxFCIzNVFhc4GRQnKDsbKzwhYjNFJUkqHB0dIVJCWTQ1OCovAXYmOjw//EABkBAQADAQEAAAAAAAAAAAAAAAABAgMEBf/EACkRAQACAQEGBgIDAAAAAAAAAAABAhEDEiExQVFhBBMUIjIzgaFxsfD/2gAMAwEAAhEDEQA/ANzREpArKREBERASN3PLfZlOp0TXS9IG06ESq51ZxjxVIkknNF75xPt/xmBvipyvsl41H/cqf0mPuucbZlPr1Ko7qVU/UJCb2Qzb/Z3wNw/+qeyP+bV/2a39JVedDZJIArVcn/4a39s0FPuj1l74HRdHlvYP1alT/bqf0lbnlvs6kFNWuyBjgFqdbGe8KZqrZfAe6W/LPyNL55+qBvLZW1re7TpLeqtVM6Sy5GGwDggjI3EfGZCa+5nP0Gp7f/8ANJsGAiIgIiICIiAiIgIiICIiAiIgJSIgIiVgUiViBSc0X3nE+3/GZ0vOaL7zifb/AIzAmV7IZt/s75M73tkN2/2d8DBz7o9Ze+fE+6PWXvgTfZfAS35aeRp/PP1S42XwHulvyz8jS+efqgbC5nP0Gp7c/YST+a/5nP0Gp7f8CTYEBERAREQEREBERArEpECsSkQKxKRAREQErKSsBERATme+84n2/wCMzpicz33nE+3/ABmBMr2Q3b/85Mr2Q3b/AGd8D",
+		"id": 1
+	},
+	{
+		"title": "Jabon tocador",
+		"price": 80,
+		"thumbnail": "https://www.google.com/imgres?imgurl=https%3A%2F%2Findustriaslitoral.com.ar%2Fwp-content%2Fuploads%2Fsites%2F25%2F2022%2F05%2F3011150_f.jpg&imgrefurl=https%3A%2F%2Findustriaslitoral.com.ar%2Fproducto%2Fjabon-tocador-rexona-grande-125-grs%2F&tbnid=JkwpsHM55TeY8M&vet=12ahUKEwiY1ZidhO36AhV_uZUCHedWCq4QMygEegUIARD0AQ..i&docid=SVwKr_Gfi1c4OM&w=1000&h=1000&q=jabon%20de%20tocador&ved=2ahUKEwiY1ZidhO36AhV_uZUCHedWCq4QMygEegUIARD0AQ",
+		"id": 2
+	},
+	{
+		"title": "Pasta dental Oral B",
+		"price": 190,
+		"thumbnail": "https://www.google.com/imgres?imgurl=https%3A%2F%2Ffarmacityar.vteximg.com.br%2Farquivos%2Fids%2F209148-1000-1000%2F221395_pasta-dental-colgate-triple-accion-x-180-g_imagen-1.jpg%3Fv%3D637541738066500000&imgrefurl=https%3A%2F%2Fwww.farmacity.com%2Fpasta-dental-colgate-triple-accion-x-180-g%2Fp&tbnid=IbijPUEaXRWfiM&vet=12ahUKEwi6lrCJhO36AhXnu5UCHY1XBNYQMygAegUIARDfAQ..i&docid=sKKQrpVdDoC60M&w=1000&h=1000&q=pasta%20dental&ved=2ahUKEwi6lrCJhO36AhXnu5UCHY1XBNYQMygAegUIARDfAQ",
+		"id": 3
+	},
+	{
+		"title": "cepillo de dientes",
+		"price": 200,
+		"thumbnail": "data:image/jpeg;base64",
+		"id": 4
+	},
+	{
+		"title": "maquina",
+		"price": 4400,
+		"thumbnail": "data:imagdsfsadsa64",
+		"id": 5
+	},
+	{
+		"title": "peine",
+		"price": 777,
+		"thumbnail": "data:i",
+		"id": 7
+	},
+	{
+		"title": "secador de pelo",
+		"price": 54,
+		"thumbnail": "datatrrrrrrrrrrrrr:i",
+		"id": 8
+	}
+]
