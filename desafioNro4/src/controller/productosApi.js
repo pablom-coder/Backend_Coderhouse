@@ -1,6 +1,7 @@
 const createError = require('http-errors')
 const fs = require('fs/promises');
 const path = require('path');
+const res = require('express/lib/response');
 
 const filePath = path.resolve(__dirname, '../../productos.json');
 
@@ -65,40 +66,68 @@ class Producto {
         }
 
     async updateById (id, datanueva) {
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos)
-        const indice = arrayProd.findIndex(prod => prod.id == id);
+        let idCorrecto = false;
+        try{
 
-        const {title, price, thumbnail} = datanueva
+            
+            const productos = await fs.readFile(filePath, 'utf8');
+            const arrayProd = JSON.parse(productos)
 
-        const intId = Math.floor(id)
+            const existe = await this.existe(id)
 
-        const nuevoProducto = {
-            title,
-            price,
-			thumbnail,
-            id: intId,
+            console.log(existe)
+            if(!existe){
+                
+                return('Error,producto no encontrado')//('Error,producto no encontrado')
+            }else{ 
+                idCorrecto = true
+                const indice = arrayProd.findIndex(prod => prod.id == id);
+
+                const {title, price, thumbnail} = datanueva
+
+                const intId = Math.floor(id)
+
+                const nuevoProducto = {
+                    title,
+                    price,
+                    thumbnail,
+                    id: intId,
+                }
+
+                arrayProd.splice(indice, 1, nuevoProducto);
+
+                const DataActualizada = JSON.stringify(arrayProd, null, "\t")
+                await fs.writeFile(filePath, DataActualizada)
+                console.log(idCorrecto)
+                if (!idCorrecto) {
+                    throw "No existe el producto solicitado!";
+                  }
+                return nuevoProducto
+            }
+        }catch(error){
+            throw(error)
         }
-
-        arrayProd.splice(indice, 1, nuevoProducto);
-
-        const DataActualizada = JSON.stringify(arrayProd, null, "\t")
-        await fs.writeFile(filePath, DataActualizada)
-
-        return nuevoProducto
     }
 
     async deleteById (id){
         const productos = await fs.readFile(filePath, 'utf8');
         const arrayProd = JSON.parse(productos)
-        const indice = arrayProd.findIndex(prod => prod.id == id);
 
-        arrayProd.splice(indice, 1);
+        const existe = await this.existe(id)//
+        console.log(existe)//
+ 
+        if(!existe){
+            return(`El id: ${id} No existe, verifique`) //('Error,producto no encontrado')
+        }else{ 
+            const indice = arrayProd.findIndex(prod => prod.id == id);
+            
+            arrayProd.splice(indice, 1);
 
-        const newData = JSON.stringify(arrayProd, null, "\t")
-        await fs.writeFile(filePath, newData)
+            const newData = JSON.stringify(arrayProd, null, "\t")
+            await fs.writeFile(filePath, newData)
 
-        return `Se elimino el producto con el id: ${id}`
+            return `Se elimino el producto con el id: ${id}`
+        }
     }
 }
 

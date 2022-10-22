@@ -24,21 +24,63 @@
 		"id": 4
 	},
 	{
-		"title": "maquina",
-		"price": 4400,
-		"thumbnail": "data:imagdsfsadsa64",
-		"id": 5
-	},
-	{
-		"title": "peine",
-		"price": 777,
-		"thumbnail": "data:i",
-		"id": 7
-	},
-	{
 		"title": "secador de pelo",
 		"price": 54,
 		"thumbnail": "datatrrrrrrrrrrrrr:i",
+		"id": 5
+	},
+	{
+		"title": "osooso",
+		"price": 88899,
+		"thumbnail": "ddlflkd",
+		"id": 6
+	},
+	{
+		"title": "crema afeitar",
+		"price": 54,
+		"thumbnail": "data00000rrrrrrrrr:i",
+		"id": 7
+	},
+	{
+		"title": "crema afeitar",
+		"price": 5400,
+		"thumbnail": "data00000rrrrrrrrr:i",
 		"id": 8
+	},
+	{
+		"title": "crema ",
+		"price": 45665,
+		"thumbnail": "prueba stafr:i",
+		"id": 9
+	},
+	{
+		"title": "cartuchera ",
+		"price": 9876,
+		"thumbnail": "puyyyyyyyyyyi",
+		"id": 12
+	},
+	{
+		"title": "hojas ",
+		"price": 1234,
+		"thumbnail": "tttttt",
+		"id": 14
+	},
+	{
+		"title": "colores",
+		"price": 5555,
+		"thumbnail": "pppppppppppp",
+		"id": 15
+	},
+	{
+		"title": "temperas grndes",
+		"price": 1,
+		"thumbnail": "sssssss",
+		"id": 16
+	},
+	{
+		"title": "temperas chicas",
+		"price": 21,
+		"thumbnail": "rreer",
+		"id": 17
 	}
 ]

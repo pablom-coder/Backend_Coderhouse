@@ -47,15 +47,11 @@ router.post("/", async (req, res) => {
         nuevoId = arrayProductos[arrayProductos.length - 1].id + 1
     }
 
-
-
     const data = req.body;
 
     console.log(data);
 
     const {title, price, thumbnail} = req.body
-
-
 
     const priceNumber = Math.floor(price)
 
@@ -67,15 +63,15 @@ router.post("/", async (req, res) => {
 
     // se crea un nuevo producto y se le envia al controlador
 
-    let nuevoUsuario = {
+    let nuevoProducto = {
         title,
         price: priceNumber,
 		thumbnail,
     }
 
-    const dataController = await ProductsController.saveNewProduct(nuevoUsuario)
+    const dataController = await ProductsController.saveNewProduct(nuevoProducto)
 
-    res.json({
+    res.status(201).json({
         msg: `Se agrego el producto con el id: ${nuevoId}`,
         data: dataController
     })
@@ -84,7 +80,6 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     const id = req.params.id;
     const {title, price, thumbnail} = req.body
-
 
     if(!title || !price || !thumbnail){
         return res.status(400).json({
@@ -97,14 +92,15 @@ router.put("/:id", async (req, res) => {
         price,
 		thumbnail,
     }
+
     const productoActualizado = await ProductsController.updateById(id, nuevoProducto)
 
     console.log(id)
+       
+        res.status(200).json({
+            data: productoActualizado,
+        })
 
-    res.json({
-        msg: `Actualizado el producto con el id: ${id}`,
-        data: productoActualizado,
-    })
 })
 
 router.delete("/:id", async (req, res) => {
