@@ -48,7 +48,6 @@ router.post("/", async (req, res) => {
     }
 
     const data = req.body;
-
     console.log(data);
 
     const {title, price, thumbnail} = req.body
@@ -78,38 +77,60 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/:id", async (req, res) => {
-    const id = req.params.id;
-    const {title, price, thumbnail} = req.body
+    try{
+            if (isNaN(req.params.id)) {
+                return res.status(400).json({
+                error: "ID no valido, verifique!",
+                });
+            } 
+            const id = req.params.id;
+        const {title, price, thumbnail} = req.body
 
-    if(!title || !price || !thumbnail){
-        return res.status(400).json({
-            msg: "datos invalidos"
-        })
-    }
+        if(!title || !price || !thumbnail){
+            return res.status(400).json({
+                msg: "Campos invalidos"
+            })
+        }
 
-    const nuevoProducto = {
-        title,
-        price,
-		thumbnail,
-    }
+        const nuevoProducto = {
+            title,
+            price,
+            thumbnail,
+        }
 
-    const productoActualizado = await ProductsController.updateById(id, nuevoProducto)
+        const productoActualizado = await ProductsController.updateById(id, nuevoProducto)
 
-    console.log(id)
+        console.log(id)
        
         res.status(200).json({
             data: productoActualizado,
         })
-
+    }catch(error){
+        return res.status(404).json({
+            error: error,
+          });
+    }
 })
 
 router.delete("/:id", async (req, res) => {
-    const id = req.params.id;
-    const message = await ProductsController.deleteById(id)
+    try{
+        if (isNaN(req.params.id)) {
+            return res.status(400).json({
+              error: "ID no valido, verifique!",
+            });
+        } 
+        const id = req.params.id;
+        console.log('id', id)
+        const message = await ProductsController.deleteById(id)
 
-    res.json({
-        msg: message
-    })
+        res.status(200).json({
+            msg: message
+        })
+    }catch(error){
+        return res.status(404).json({
+            error: error,
+        })
+    }
 })
 
 module.exports = router;

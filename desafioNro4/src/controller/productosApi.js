@@ -66,21 +66,18 @@ class Producto {
         }
 
     async updateById (id, datanueva) {
-        let idCorrecto = false;
-        try{
 
-            
+        try{            
             const productos = await fs.readFile(filePath, 'utf8');
             const arrayProd = JSON.parse(productos)
 
             const existe = await this.existe(id)
 
             console.log(existe)
-            if(!existe){
-                
-                return('Error,producto no encontrado')//('Error,producto no encontrado')
-            }else{ 
-                idCorrecto = true
+            if(!existe){               
+                throw 'El ID no existe, verifique!!'//('Error,producto no encontrado')
+            }
+
                 const indice = arrayProd.findIndex(prod => prod.id == id);
 
                 const {title, price, thumbnail} = datanueva
@@ -98,35 +95,36 @@ class Producto {
 
                 const DataActualizada = JSON.stringify(arrayProd, null, "\t")
                 await fs.writeFile(filePath, DataActualizada)
-                console.log(idCorrecto)
-                if (!idCorrecto) {
-                    throw "No existe el producto solicitado!";
-                  }
+
                 return nuevoProducto
-            }
+
         }catch(error){
             throw(error)
         }
     }
 
     async deleteById (id){
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos)
+        try{
+            const productos = await fs.readFile(filePath, 'utf8');
+            const arrayProd = JSON.parse(productos)
 
-        const existe = await this.existe(id)//
-        console.log(existe)//
- 
-        if(!existe){
-            return(`El id: ${id} No existe, verifique`) //('Error,producto no encontrado')
-        }else{ 
-            const indice = arrayProd.findIndex(prod => prod.id == id);
+            const existe = await this.existe(id)//
+            console.log(existe)//
+    
+            if(!existe){
+                throw "El ID no existe, verifique!!";
+                }    
+                const indice = arrayProd.findIndex(prod => prod.id == id);
+                
+                arrayProd.splice(indice, 1);
+
+                const newData = JSON.stringify(arrayProd, null, "\t")
+                await fs.writeFile(filePath, newData)
+
+                return `Se elimino el producto con el id: ${id}`
             
-            arrayProd.splice(indice, 1);
-
-            const newData = JSON.stringify(arrayProd, null, "\t")
-            await fs.writeFile(filePath, newData)
-
-            return `Se elimino el producto con el id: ${id}`
+        }catch(error){
+            throw error;
         }
     }
 }
