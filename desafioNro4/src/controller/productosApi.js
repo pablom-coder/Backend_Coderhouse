@@ -29,7 +29,7 @@ class Producto {
         const arrayProd = JSON.parse(productos);
         const existe = await this.existe(id)
 
-        if(!existe) throw createError(404, 'producto no encontrado')
+        if (!existe) throw createError(404, 'producto no encontrado')
 
         const indice = arrayProd.findIndex(prod => prod.id == id);
 
@@ -40,20 +40,24 @@ class Producto {
         const productos = await fs.readFile(filePath, 'utf8');
         const arrayProd = JSON.parse(productos)
 
-        const {title, price, thumbnail} = datanueva
+        const {
+            title,
+            price,
+            thumbnail
+        } = datanueva
 
         let nuevoId = 1
 
-        if(arrayProd.length) {
-           nuevoId = arrayProd[arrayProd.length - 1].id + 1
+        if (arrayProd.length) {
+            nuevoId = arrayProd[arrayProd.length - 1].id + 1
         }
 
         const intId = Math.floor(nuevoId)
-    
+
         const product = {
             title,
             price,
-			thumbnail,
+            thumbnail,
             id: intId
         }
 
@@ -62,68 +66,76 @@ class Producto {
         const newData = JSON.stringify(arrayProd, null, "\t")
 
         await fs.writeFile(filePath, newData)
-            return product
-        }
+        return product
+    }
 
-    async updateById (id, datanueva) {
-
-        try{            
+    async updateById(id, datanueva) {
+        try {
             const productos = await fs.readFile(filePath, 'utf8');
             const arrayProd = JSON.parse(productos)
 
             const existe = await this.existe(id)
 
             console.log(existe)
-            if(!existe){               
-                throw 'El ID no existe, verifique!!'//('Error,producto no encontrado')
+            if (!existe) {
+                throw 'El ID no existe, verifique!!' //('Error,producto no encontrado')
             }
 
-                const indice = arrayProd.findIndex(prod => prod.id == id);
+            const indice = arrayProd.findIndex(prod => prod.id == id);
 
-                const {title, price, thumbnail} = datanueva
+            const {
+                title = arrayProd[indice].title,
+                    price = arrayProd[indice].price,
+                    thumbnail = arrayProd[indice].thumbnail
+            } = datanueva
 
-                const intId = Math.floor(id)
+            const intId = Math.floor(id)
 
-                const nuevoProducto = {
+            const nuevoProducto = {
+                ...arrayProd[indice],
+                ...{
                     title,
                     price,
                     thumbnail,
                     id: intId,
                 }
+            }
 
-                arrayProd.splice(indice, 1, nuevoProducto);
+            arrayProd.splice(indice, 1, nuevoProducto);
 
-                const DataActualizada = JSON.stringify(arrayProd, null, "\t")
-                await fs.writeFile(filePath, DataActualizada)
+            const DataActualizada = JSON.stringify(arrayProd, null, "\t")
+            await fs.writeFile(filePath, DataActualizada)
 
-                return nuevoProducto
+            return nuevoProducto
 
-        }catch(error){
-            throw(error)
+
+        } catch (error) {
+            throw (error)
         }
     }
 
-    async deleteById (id){
-        try{
+
+    async deleteById(id) {
+        try {
             const productos = await fs.readFile(filePath, 'utf8');
             const arrayProd = JSON.parse(productos)
 
-            const existe = await this.existe(id)//
-            console.log(existe)//
-    
-            if(!existe){
+            const existe = await this.existe(id) //
+            console.log(existe) //
+
+            if (!existe) {
                 throw "El ID no existe, verifique!!";
-                }    
-                const indice = arrayProd.findIndex(prod => prod.id == id);
-                
-                arrayProd.splice(indice, 1);
+            }
+            const indice = arrayProd.findIndex(prod => prod.id == id);
 
-                const newData = JSON.stringify(arrayProd, null, "\t")
-                await fs.writeFile(filePath, newData)
+            arrayProd.splice(indice, 1);
 
-                return `Se elimino el producto con el id: ${id}`
-            
-        }catch(error){
+            const newData = JSON.stringify(arrayProd, null, "\t")
+            await fs.writeFile(filePath, newData)
+
+            return `Se elimino el producto con el id: ${id}`
+
+        } catch (error) {
             throw error;
         }
     }
@@ -132,5 +144,5 @@ class Producto {
 const instanciaProductsApi = new Producto(filePath);
 
 module.exports = {
-	ProductsController : instanciaProductsApi
+    ProductsController: instanciaProductsApi
 }

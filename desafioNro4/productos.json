@@ -18,9 +18,9 @@
 		"id": 3
 	},
 	{
-		"title": "secador de pelo",
-		"price": 200,
-		"thumbnail": "datatrrrrrrrrrrrrr:i",
+		"title": " pelo",
+		"price": " 410",
+		"thumbnail": " 410",
 		"id": 4
 	},
 	{
@@ -46,12 +46,9 @@
 		"id": 9
 	},
 	{
-		"price": 9876,
-		"thumbnail": "puyyyyyyyyyyi",
-		"id": 12
-	},
-	{
-		"title": "hojas Oficio",
-		"id": 14
+		"title": "secador de pelo",
+		"price": 20,
+		"thumbnail": "datatrrrrrrrrrrrrr:i",
+		"id": 10
 	}
 ]
