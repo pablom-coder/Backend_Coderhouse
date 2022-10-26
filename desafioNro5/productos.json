@@ -1,0 +1,50 @@
+[
+	{
+		"title": "Girasol",
+		"price": 250,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Sunflower-64.png",
+		"id": 1
+	},
+	{
+		"title": "Mochila",
+		"price": 80,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Backpack-64.png",
+		"id": 2
+	},
+	{
+		"title": "Mariposa",
+		"price": 190,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Butterfly-1-64.png",
+		"id": 3
+	},
+	{
+		"title": "Sol",
+		"price": " 410",
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Sun-64.png",
+		"id": 4
+	},
+	{
+		"title": "Camara",
+		"price": 20,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Camera-64.png",
+		"id": 5
+	},
+	{
+		"title": "Botas",
+		"price": 20,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Boot-64.png",
+		"id": 10
+	},
+	{
+		"title": "Manguera",
+		"price": 777,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Hose-64.png",
+		"id": 11
+	},
+	{
+		"title": "Guantes",
+		"price": 250,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Gloves-64.png",
+		"id": 12
+	}
+]
