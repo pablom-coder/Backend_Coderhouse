@@ -1,138 +1,33 @@
 const createError = require('http-errors')
-const fs = require('fs/promises');
+const fs = require('fs');
 const path = require('path');
 const res = require('express/lib/response');
 
-const filePath = path.resolve(__dirname, '../../productos.json');
-
-class Producto {
-    constructor(archivo) {
-        this.archivo = archivo;
+const readFile = async (pathFile) => {
+    try {
+        const filePath = path.resolve(__dirname,`../../${pathFile}.json`)
+        const fileData = await fs.promises.readFile(filePath, "utf-8");
+        const dataJson = JSON.parse(fileData);
+        return dataJson;
+      } catch (err) {
+        console.log(err,"ooo");
+      }
+  };
+    const saveFile = async (params,pathFile) => {
+      try {
+        const filePath = path.resolve(__dirname,`../../${pathFile}.json`)
+        const data = JSON.stringify(params, null, "\t");
+        await fs.promises.writeFile(filePath, data);
+      } catch (err) {
+        console.log(err);
+      }
+  };
+    const validateBody = (data) => {
+      if(!data.title || !data.price || typeof data.title !== 'string' || typeof data.price !== 'number') throw createError(400,'Datos invalidos');
     }
-
-    async existe(id) {
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos);
-        const indice = arrayProd.findIndex(prod => prod.id == id);
-
-        return indice >= 0;
+  
+    module.exports = {
+      readFile,
+      saveFile,
+      validateBody
     }
-
-    async getAll() {
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos)
-        return arrayProd
-    }
-
-    async getById(id) {
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos);
-        const existe = await this.existe(id)
-
-        if(!existe) throw createError(404, 'producto no encontrado')
-
-        const indice = arrayProd.findIndex(prod => prod.id == id);
-
-        return arrayProd[indice]
-    }
-
-    async saveNewProduct(datanueva) {
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos)
-
-        const {title, price, thumbnail} = datanueva
-
-        let nuevoId = 1
-
-        if(arrayProd.length) {
-           nuevoId = arrayProd[arrayProd.length - 1].id + 1
-        }
-
-        const intId = Math.floor(nuevoId)
-    
-        const product = {
-            title,
-            price,
-			thumbnail,
-            id: intId
-        }
-
-        arrayProd.push(product);
-
-        const newData = JSON.stringify(arrayProd, null, "\t")
-
-        await fs.writeFile(filePath, newData)
-            return product
-        }
-
-    async updateById (id, datanueva) {
-        let idCorrecto = false;
-        try{
-
-            
-            const productos = await fs.readFile(filePath, 'utf8');
-            const arrayProd = JSON.parse(productos)
-
-            const existe = await this.existe(id)
-
-            console.log(existe)
-            if(!existe){
-                
-                return('Error,producto no encontrado')//('Error,producto no encontrado')
-            }else{ 
-                idCorrecto = true
-                const indice = arrayProd.findIndex(prod => prod.id == id);
-
-                const {title, price, thumbnail} = datanueva
-
-                const intId = Math.floor(id)
-
-                const nuevoProducto = {
-                    title,
-                    price,
-                    thumbnail,
-                    id: intId,
-                }
-
-                arrayProd.splice(indice, 1, nuevoProducto);
-
-                const DataActualizada = JSON.stringify(arrayProd, null, "\t")
-                await fs.writeFile(filePath, DataActualizada)
-                console.log(idCorrecto)
-                if (!idCorrecto) {
-                    throw "No existe el producto solicitado!";
-                  }
-                return nuevoProducto
-            }
-        }catch(error){
-            throw(error)
-        }
-    }
-
-    async deleteById (id){
-        const productos = await fs.readFile(filePath, 'utf8');
-        const arrayProd = JSON.parse(productos)
-
-        const existe = await this.existe(id)//
-        console.log(existe)//
- 
-        if(!existe){
-            return(`El id: ${id} No existe, verifique`) //('Error,producto no encontrado')
-        }else{ 
-            const indice = arrayProd.findIndex(prod => prod.id == id);
-            
-            arrayProd.splice(indice, 1);
-
-            const newData = JSON.stringify(arrayProd, null, "\t")
-            await fs.writeFile(filePath, newData)
-
-            return `Se elimino el producto con el id: ${id}`
-        }
-    }
-}
-
-const instanciaProductsApi = new Producto(filePath);
-
-module.exports = {
-	ProductsController : instanciaProductsApi
-}

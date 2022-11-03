@@ -1,143 +1,126 @@
-const { Router } = require('express');
-const fs = require('fs/promises');
-const path = require('path');
-const { ProductsController } = require("../controller/productosApi")
-//const asyncHandler = require('express-async-handler')
-const filePath = path.resolve(__dirname, '../../productos.json');
-const router = Router();
-
-/* router.get("/productos", async (req, res) => {
-    const data = await ProductsController.getAll()
-    const cantidadObjetos = data.length
-    const validarArray = cantidadObjetos > 0 ? true : false
-    res.render("showProducts", { productos: data, cantidad: validarArray})
-}) */
+const { Router } = require("express");
+const {saveFile,readFile,validateBody} = require('../controller/productosApi')
+const { v4: uuidv4 } = require("uuid");
 
 
-router.get("/", async (req, res) => {
-    try {
-        const product = await ProductsController.getAll()
-        const cantidadObjetos = data.length
-        const validarArray = cantidadObjetos > 0 ? true : false
-        res.render("formulario", { productos: data, cantidad: validarArray})
-        /* let count = product.length;
-        if (count > 0){
-            res.render('formulario', {
-                productos: product,                
-                msg: 'Vista de Productos'
-            })
-        }else
-        {
-            res.render('formulario', {
-                productos: product,
-                msg: 'Vista de Productos - No hay Procuctos'
-            })
-        } */
-    } catch (error) {
-        next(error);
-    }
-})
+const productRoute = Router();
 
+productRoute.get("/", async (req, res, next) => {
+  try {
+    const dataJson = await readFile('productos');
+    res.render("formulario.pug", { dataJson });
+  } catch (err) {
+    next(err);
+  }
+});
 
-router.get("/:id", async (req, res) => {
-    try{
-       const id = req.params.id;
-       const product = await ProductsController.getById(id);
-
-        res.json({
-            msg: `id del productos: ${id}`,
-            msg2: product
-        })
-    } catch (err) {
-        const status = err.status || 500;
-        const message = err.message || "internal server error";
-
-        console.log(err.stack)
-
-        res.status(status).json(
-            {
-                message
-            }
-        )
-    }
-})
-
-router.post("/", async (req, res) => {
-    
-    const productos = await fs.readFile(filePath, 'utf8');
-    const arrayProductos = JSON.parse(productos)
-
-    let nuevoId = 1
-
-    if(arrayProductos.length) {
-        nuevoId = arrayProductos[arrayProductos.length - 1].id + 1
-    }
-
-    const data = req.body;
-
-    console.log(data);
-
-    const {title, price, thumbnail} = req.body
-
-    const priceNumber = Math.floor(price)
-
-    if(!title || !price || !thumbnail){
-        return res.status(400).json({
-            msg: "datos invalidos"
-        })
-    }
-
-    // se crea un nuevo producto y se le envia al controlador
-
-    let nuevoProducto = {
-        title,
-        price: priceNumber,
-		thumbnail,
-    }
-
-    //const dataController = await ProductsController.saveNewProduct(nuevoProducto)
-    await ProductsController.saveNewProduct(nuevoProducto)
-    //res.redirect('/')
-
-    /* res.status(201).json({
-        msg: `Se agrego el producto con el id: ${nuevoId}`,
-        data: dataController
-    }) */
-})
-
-router.put("/:id", async (req, res) => {
+productRoute.get("/:id", async (req, res, next) => {
+  try {
     const id = req.params.id;
-    const {title, price, thumbnail} = req.body
 
-    if(!title || !price || !thumbnail){
-        return res.status(400).json({
-            msg: "datos invalidos"
-        })
+    const dataJson = await readFile('productos');
+
+    const index = dataJson.findIndex((itemId) => itemId.id == id);
+
+    if (index < 0) {
+      return res.status(404).json({
+        msg: `El producto con id ${id} no existe`,
+      });
     }
-
-    const nuevoProducto = {
-        title,
-        price,
-		thumbnail,
-    }
-
-    const productoActualizado = await ProductsController.updateById(id, nuevoProducto)
-
-    console.log(id)
-       
-        res.status(200).json({
-            data: productoActualizado,
-        })
-
-})
-
-router.delete("/:id", async (req, res) => {
-    const id = req.params.id;
-    const message = await ProductsController.deleteById(id)
 
     res.json({
-        msg: message
-    })
-})
+      data: dataJson[index],
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+productRoute.post("/", async (req, res, next) => {
+  try {
+    const { body } = req;
 
-module.exports = router;
+    body.price = Number(body.price);
+
+    validateBody(body);
+
+    const dataJson = await readFile('productos');
+
+    const newProduct = {
+      id: uuidv4(),
+      title: body.title,
+      price: body.price,
+      thumbnail: body.thumbnail,
+    };
+
+    dataJson.push(newProduct);
+
+    await saveFile(dataJson,'productos');
+
+    res.redirect("/");
+  } catch (err) {
+    next(err);
+  }
+});
+productRoute.put("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const dataJson = await readFile('productos');
+
+    const index = dataJson.findIndex((itemId) => itemId.id == id);
+
+    if (index < 0) {
+      return res.status(404).json({
+        msg: `El producto con id ${id} no existe`,
+      });
+    }
+
+    const { body } = req;
+
+    body.price = Number(body.price);
+
+    validateBody(body);
+
+    dataJson[index] = {
+      id: id,
+      title: body.title,
+      price: body.price,
+      thumbnail: body.thumbnail,
+    };
+
+    await saveFile(dataJson,'productos');
+
+    res.json({
+      msg: "El producto se ha modificado correctamente",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+productRoute.delete("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const dataJson = await readFile('productos');
+
+    const index = dataJson.findIndex((itemId) => itemId.id == id);
+
+    if (index < 0) {
+      return res.status(404).json({
+        msg: `El producto con id ${id} no existe`,
+      });
+    }
+
+    dataJson.splice(index, 1);
+
+    await saveFile(dataJson,'productos');
+
+    res.json({
+      msg: "El producto se ha eliminado correctamente",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+module.exports = productRoute;

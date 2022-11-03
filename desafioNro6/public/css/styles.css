@@ -1,0 +1,34 @@
+.chat-messages {
+	padding: 30px;
+	max-height: 500px;
+	overflow-y: scroll;
+    width: 500px;
+    border: 1px solid #888;
+    margin-bottom: 20px;
+    border-radius: 15px;
+
+
+}
+.chat-messages .message {
+	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+    border: 1px solid #444 ;
+}
+
+.chat-messages .message .meta {
+	font-size: 15px;
+	font-weight: bold;
+	opacity: 0.7;
+	margin-bottom: 7px;
+    color: blue;
+}
+
+.chat-messages .message .meta span {
+	color: brown;
+    margin-left: 7px;
+}
+.chat-messages .message .text{
+    font-style: italic;
+    color: green;
+}

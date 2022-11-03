@@ -1,0 +1,32 @@
+[
+	{
+		"email": "pablo@gmail.com",
+		"msg": "Mensaje Holla",
+		"time": "2:00 am"
+	},
+	{
+		"email": "npmanrique@gmail.com",
+		"msg": "jejeje",
+		"time": "8:20 pm"
+	},
+	{
+		"email": "ds@jajaj.com",
+		"msg": "chau",
+		"time": "8:42 pm"
+	},
+	{
+		"email": "npmanrique@gmail.com",
+		"msg": "mensaje2",
+		"time": "8:43 pm"
+	},
+	{
+		"email": "prueba@hotmail.com",
+		"msg": "55454",
+		"time": "8:46 pm"
+	},
+	{
+		"email": "prueba2@gmail.com",
+		"msg": "chau",
+		"time": "8:47 pm"
+	}
+]

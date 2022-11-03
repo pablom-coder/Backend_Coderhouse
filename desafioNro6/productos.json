@@ -1,62 +1,56 @@
 [
 	{
-		"title": "Girasol",
-		"price": 250,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Sunflower-64.png",
-		"id": 1
-	},
-	{
-		"title": "Mochila",
-		"price": 80,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Backpack-64.png",
-		"id": 2
-	},
-	{
 		"title": "Mariposa",
 		"price": 190,
 		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Butterfly-1-64.png",
-		"id": 3
+		"id": "a23a69ac-744d-458d-a999-c8d649a3b28f"
 	},
 	{
 		"title": "Sol",
 		"price": " 410",
 		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Sun-64.png",
-		"id": 4
+		"id": "a23a69ac-744d-458d-a261-c8d649a3b28f"
 	},
 	{
 		"title": "Camara",
 		"price": 20,
 		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Camera-64.png",
-		"id": 5
+		"id": "a23a69ac-744d-458d-a261-c8d649a3b28f"
 	},
 	{
 		"title": "Botas",
 		"price": 20,
 		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Boot-64.png",
-		"id": 10
+		"id": "fdd19b7c-f867-4b21-b3f9-b2ae34ace324"
 	},
 	{
-		"title": "Manguera",
-		"price": 777,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Hose-64.png",
-		"id": 11
-	},
-	{
+		"id": "a23a69ac-744d-458d-a261-c8d649a3b28f",
 		"title": "Guantes",
-		"price": 250,
-		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Gloves-64.png",
-		"id": 12
+		"price": 6680,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Gloves-64.png"
 	},
 	{
-		"title": "dasf",
-		"price": 444443,
-		"thumbnail": "fasdfsfs",
-		"id": 13
+		"id": "2f5e8542-1653-4d36-be2e-8aa23d0e990c",
+		"title": "Guantes",
+		"price": 7888,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Gloves-64.png"
 	},
 	{
-		"title": "223",
-		"price": 444,
-		"thumbnail": "fasfsdf",
-		"id": 14
+		"id": "6778bf6d-3952-4209-b298-ab5f88fad570",
+		"title": "Sol",
+		"price": 120,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/spring-2-1/30/Sun-64.png"
+	},
+	{
+		"id": "e82cd571-fedd-482f-b845-1a157b7f7129",
+		"title": "sol",
+		"price": 4444,
+		"thumbnail": "\"https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/migrated/melon.jpg\""
+	},
+	{
+		"id": "3e022037-d7e2-4f3c-a92e-29e25e951487",
+		"title": "fsd",
+		"price": 6678,
+		"thumbnail": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBESEhISEhESEhIVEhISEhISGBESEhISGRgeGhgUGBocIS8lHh4rHxgYJjgnKy81NTU1HCQ7QDszQC40NT8BDAwMEA8QHxISHjYrISs9ODQxNDQxNDU0Nz80Pz02MTExNDE0NDQ0ND00Pz80MTExNDQ2NDQ0NDQ0NDY0MTg4NP/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgEEBQcIAwL/xABLEAACAQMBAwYJBwoEBQUAAAABAgADBBESBSExBgcTMkFxFCIzNVFhc4GRQnKDsbKzwhYjNFJUkqHB0dIVJCWTQ1OCovAXYmOjw//EABkBAQADAQEAAAAAAAAAAAAAAAABAgMEBf/EACkRAQACAQEGBgIDAAAAAAAAAAABAhEDEiExQVFhBBMUIjIzgaFxsfD/2gAMAwEAAhEDEQA/ANzREpArKREBERASN3PLfZlOp0TXS9IG06ESq51ZxjxVIkknNF75xPt/xmBvipyvsl41H/cqf0mPuucbZlPr1Ko7qVU/UJCb2Qzb/Z3wNw/+qeyP+bV/2a39JVedDZJIArVcn/4a39s0FPuj1l74HRdHlvYP1alT/bqf0lbnlvs6kFNWuyBjgFqdbGe8KZqrZfAe6W/LPyNL55+qBvLZW1re7TpLeqtVM6Sy5GGwDggjI3EfGZCa+5nP0Gp7f/8ANJsGAiIgIiICIiAiIgIiICIiAiIgJSIgIiVgUiViBSc0X3nE+3/GZ0vOaL7zifb/AIzAmV7IZt/s75M73tkN2/2d8DBz7o9Ze+fE+6PWXvgTfZfAS35aeRp/PP1S42XwHulvyz8jS+efqgbC5nP0Gp7c/YST+a/5nP0Gp7f8CTYEBERAREQEREBERArEpECsSkQKxKRAREQErKSsBERATme+84n2/wCMzpicz33nE+3/ABmBMr2Q3b/85Mr2Q3b/AGd8D"
 	}
 ]
