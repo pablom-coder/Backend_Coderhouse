@@ -1,0 +1,38 @@
+[
+    {
+        "title": "pelota de basket",
+        "price": 1234,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+        "timestamp": "07-11-2022 11:11:67",
+        "codigo": "4272a08d-6db1-4469-b299-ff1ddc9c5904",
+        "stock": 6,
+        "id": 2
+    },
+    {
+        "title": "Globo Terráqueo",
+        "price": 345,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+        "timestamp": "07-11-2022 11:11:10",
+        "codigo": "11d277a7-28f4-45ef-9471-558d9e6e51c5",
+        "stock": 3,
+        "id": 3
+    },
+    {
+        "title": "peras",
+        "price": 345,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+        "timestamp": "08-11-2022 21:11:42",
+        "codigo": "8b3ac134-1d7f-48ed-bca2-e84bf4014d49",
+        "stock": 2,
+        "id": 4
+    },
+    {
+        "title": "pelota de tenis",
+        "price": 1005,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+        "timestamp": "09-11-2022 19:11:10",
+        "codigo": "5aae899b-a286-4618-a8e2-76e7e0be039a",
+        "stock": 2,
+        "id": 5
+    }
+]
