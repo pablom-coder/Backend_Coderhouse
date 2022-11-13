@@ -9,14 +9,29 @@ const router = Router()
 
 router.get('/:id/products', async (req, res, next) => {
     try {
+      if (isNaN(req.params.id)) {
+          return res.status(400).json({
+          error: "ID no valido, verifique!",
+          });
+      } 
         const id = parseInt(req.params.id)
         const response = await CartController.getCartById(id)
+
         const data = await response
         res.json({ 'Productos del carrito': data.products });
 
     } catch (err) {
-        next(err);
-    }
+      const status = err.status || 500;
+      const message = err.message || "internal server error";
+
+      console.log(err.stack)
+
+      res.status(status).json(
+          {
+              message
+          }
+      )
+  }
 });
 
 //POST: '/' - Crea un carrito y devuelve su id.
@@ -36,6 +51,11 @@ router.post('/', isAdmin, async (req, res, next) => {
 // POST: '/:id/products' - Para incorporar productos al carrito por su id de producto
 router.post('/:id/products', isAdmin, async (req, res, next) => {
     try {
+          if (isNaN(req.params.id)) {
+            return res.status(400).json({
+            error: "ID no valido, verifique!",
+            });
+        } 
         const cartId = parseInt(req.params.id);
         const productId = parseInt(req.body.id);
         const cartSelected = await CartController.getCartById(cartId);
@@ -46,27 +66,44 @@ router.post('/:id/products', isAdmin, async (req, res, next) => {
         });
 
     } catch (err) {
-        next(err);
+        const status = err.status || 500;
+        const message = err.message || "internal server error";
+
+        console.log(err.stack)
+
+        res.status(status).json(
+            {
+                message
+            }
+        )
     }
 });
 
 router.delete("/:id/products/:id_prod", async (req, res) => {
     try {
-      if (isNaN(req.params.id)) {
+      if (isNaN(req.params.id) || isNaN(req.params.id_prod)) {
         return res.status(400).json({
-          error: "Datos ingresados incorrectamente, verifique!",
+          err: "Datos ingresados incorrectamente, verifique!",
         });
       }
+      
       const idCart = parseInt(req.params.id);
       const idProduct = parseInt(req.params.id_prod)
       await CartController.deleteProduct(idCart, idProduct);
       return res.status(200).json({
         msg: `El producto con ID: ${idProduct} se elimino correctamente del carrito ${idCart}`,
       });
-    } catch (error) {
-      return res.status(400).json({
-        error: error,
-      });
+    } catch (err) {
+        const status = err.status || 500;
+        const message = err.message || "internal server error";
+
+        console.log(err.stack)
+
+        res.status(status).json(
+            {
+                message
+            }
+        )
     }
   });
 
@@ -82,9 +119,18 @@ router.delete('/:id', async (req, res, next) => {
 
          return res.status(200).json({ message: `carrito ${id} fue eliminado con exito`})
 
-    } catch (error) {
-        next(error)
-    }
+    }  catch (err) {
+          const status = err.status || 500;
+          const message = err.message || "internal server error";
+
+          console.log(err.stack)
+
+          res.status(status).json(
+              {
+                  message
+              }
+          )
+        }
 
 });
 

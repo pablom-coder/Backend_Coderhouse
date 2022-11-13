@@ -1,7 +1,9 @@
+const createError = require('http-errors');
 const fs = require('fs');
 const path = require('path')
 const filePath = path.resolve(__dirname, "../cart.json");
 const moment = require("moment");
+
 
 const { ProductsController } = require('./product')
 
@@ -96,8 +98,8 @@ class Contenedor {
         const data = await this.readFileFn()
         const idProducto = data.find((producto) => producto.id === id);
 
-        if (!idProducto) throw new Error("El carrito buscado no existe!");
-
+        if (!idProducto) throw  createError(404, 'carrito no encontrado');
+            
         return idProducto;
 
     }
@@ -110,7 +112,7 @@ class Contenedor {
         const cartId = data.findIndex((producto) => producto.id === id);
 
         if (cartId < 0) {
-            throw ('El carrito no existe');
+            throw createError(404, 'El carrito no existe');
         }
 
         data.splice(cartId, 1);
@@ -129,16 +131,17 @@ class Contenedor {
             const cartSelected = await this.getAllProdInCart();
             const index = cartSelected.findIndex((cart) => cart.id === cartId);
 
-            console.log(cartSelected);
-            console.log(cartId)
+            console.log(index, 'cart seleccionado');
+            console.log(cartId, 'cart id seleccionado')
+            if (!index) throw  createError(404, 'carrito no existe');
 
             const productToDelete = cartSelected[index].products.findIndex(
                 (product) => product.id === prodId
               );
-              console.log(productToDelete,'hola')
+              console.log(productToDelete,'hola');
             
             if(productToDelete < 0){
-                throw  ('El producto no existe en el carrito');
+                throw  createError(404, 'El producto no existe en el carrito');
             }
 
             cartSelected[index].products.splice(productToDelete, 1);
@@ -146,9 +149,10 @@ class Contenedor {
             return 'Producto eliminado!';           
 
         } catch (error) {
-            return console.log(error);
+            throw error;
+            ///return console.log(error);
         }
-    }
+    } 
 }
 
 

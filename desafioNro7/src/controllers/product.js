@@ -1,7 +1,9 @@
-const fs = require('fs');
+const fs = require('fs/promises');
+const createError = require('http-errors');
 const path = require('path')
 const filePath = path.resolve(__dirname, "../products.json");
 const moment = require("moment");
+const res = require('express/lib/response');
 const { v4: uuidv4 } = require('uuid');
 
 class Contenedor {
@@ -9,156 +11,142 @@ class Contenedor {
 		this.archivo = archivo;
 	}
 
-	async validateExistFile() {
-		try {
-			await fs.promises.stat(`${this.archivo}`)
-		} catch (err) {
-			await fs.promises.writeFile(`${this.archivo}`, JSON.stringify([]));
-		}
-	}
+	async existe(id) {
+        try
+        {
+            const productos = await fs.readFile(filePath, 'utf8');
+            const arrayProd = JSON.parse(productos);
+            const indice = arrayProd.findIndex(prod => prod.id == id);
 
-	async readFileFn() {
-		await this.validateExistFile();
-		const contenido = await fs.promises.readFile(`${this.archivo}`, 'utf-8');
-		return JSON.parse(contenido);
-	}
+            return indice >= 0;
+        } catch (error) {
+            throw new Error("No se encuentra el producto!", error);
+          }
+    }
 
-	async writeProducts(productos) {
-		await this.validateExistFile();
-		const data = JSON.stringify(productos, null, 4)
-		await fs.promises.writeFile(this.archivo, data)
-	}
+    async getAll() {
+        const productos = await fs.readFile(filePath, 'utf8');
+        const arrayProd = JSON.parse(productos)
+        return arrayProd
+    }
 
-	async exists(id) {
-		const data = await this.getAll()
-		const indice = data.findIndex(product => product.id == id)
-		// if(indice < 0){
-		// 	return false;
-		// } else {
-		// 	return true;
-		// }
-		return indice >= 0;
-	}
+    async getById(id) {
+        const productos = await fs.readFile(filePath, 'utf8');
+        const arrayProd = JSON.parse(productos);
+        const existe = await this.existe(id);
 
-	//save(Object): Number - Recibe un objeto, lo guarda en el archivo, devuelve el id asignado.
-	async save(element) {
-		//el typeof al precio se lo quito porque en el form ya está el type=number, no me deja ingresar letras,
-		//y de entrada me tira error porque ingresa como string el numero del form, pero luego se parsea y se guarda como number, por eso lo quito
-		if (!element.title || typeof element.title !== 'string' || !element.price) throw new Error('Datos invalidos');
+        if(!existe) throw createError(404, 'producto no encontrado')
 
-		const data = await this.readFileFn();
-		let id = 1;
+        const indice = arrayProd.findIndex(prod => prod.id == id);
 
-		if (data.length) {
-			//Si tengo elementos en mi array
-			id = data[data.length - 1].id + 1;
-		}
+        return arrayProd[indice]
+    }
 
+    async saveNewProduct(datanueva) {
+        const productos = await fs.readFile(filePath, 'utf8');
+        const arrayProd = JSON.parse(productos)
 
-		const nuevoProducto = {
-			title: element.title,
-			price: parseInt(element.price),
-			thumbnail: element.thumbnail,
+		if (!datanueva.title || typeof datanueva.title !== 'string' || !datanueva.price) throw new Error('Datos invalidos');
+
+        const {title, price, thumbnail, timestamp, codigo, stock} = datanueva
+
+        let nuevoId = 1
+
+        if(arrayProd.length) {
+           nuevoId = arrayProd[arrayProd.length - 1].id + 1
+        }
+
+        const intId = Math.floor(nuevoId)
+    
+        const product = {
+            title,
+            price,
+			thumbnail,
 			timestamp: moment().format("DD-MM-YYYY HH:MM:SS"),
 			codigo: uuidv4(),
-			stock: parseInt(element.stock),
-			id: id,
-		};
+			stock,
+            id: intId
+        }
 
-		data.push(nuevoProducto);
+        arrayProd.push(product);
 
-		await this.writeProducts(data)
-		console.log(`Nuevo producto guardado, N° ID: ${nuevoProducto.id}`);
+        const newData = JSON.stringify(arrayProd, null, "\t")
 
-		return nuevoProducto.id;
-	}
+        await fs.writeFile(filePath, newData)
+            return product
+        }
 
-	//getAll(): Object[] - Devuelve un array con los objetos presentes en el archivo.
-	async getAll() {
-		try {
-			const data = this.readFileFn();
-			return data
+        async updateById(id, datanueva) {
+            try {
+                const productos = await fs.readFile(filePath, 'utf8');
+                const arrayProd = JSON.parse(productos)
+    
+                const existe = await this.existe(id)
+    
+                console.log(existe)
+                if (!existe) {
+                    throw 'El ID no existe, verifique!!' //('Error,producto no encontrado')
+                }
+    
+                const indice = arrayProd.findIndex(prod => prod.id == id);
+				const modificado = moment().format("DD-MM-YYYY HH:MM:SS");
+                const {
+                    title = arrayProd[indice].title,
+                    price = arrayProd[indice].price,
+                    thumbnail = arrayProd[indice].thumbnail,
+					timestamp = arrayProd[indice].timestamp,
+                	codigo = arrayProd[indice].codigo,
+                	stock = arrayProd[indice].stock
+                } = datanueva
+    
+                const intId = Math.floor(id)
+    
+                const nuevoProducto = {
+                    ...arrayProd[indice],
+                    ...{
+                        title,
+                        price,
+                        thumbnail,
+						timestamp:modificado,
+                    	codigo,
+                    	stock,
+                        id: intId,
+                    }
+                }
+    
+                arrayProd.splice(indice, 1, nuevoProducto);
+    
+                const DataActualizada = JSON.stringify(arrayProd, null, "\t")
+                await fs.writeFile(filePath, DataActualizada)
+    
+                return nuevoProducto    
+    
+            } catch (error) {
+                throw (error)
+            }
+        }
 
-		} catch {
-			console.log('Error al obtener todos los datos');
-		}
-	}
+    async deleteById (id){
+        const productos = await fs.readFile(filePath, 'utf8');
+        const arrayProd = JSON.parse(productos)
 
+        const existe = await this.existe(id)//
+        console.log(existe)//
+ 
+        if(!existe){
+            return(`El id: ${id} No existe, verifique`) //('Error,producto no encontrado')
+        }else{ 
+            const indice = arrayProd.findIndex(prod => prod.id == id);
+            
+            arrayProd.splice(indice, 1);
 
-	//getById(Number): Object - Recibe un id y devuelve el objeto con ese id, o null si no está.
-	async getById(id) {
-		const data = await this.readFileFn()
-		const idProducto = data.find((producto) => producto.id === id);
+            const newData = JSON.stringify(arrayProd, null, "\t")
+            await fs.writeFile(filePath, newData)
 
-		if (!idProducto) throw new Error("No existe ese producto");
-
-		return idProducto;
-
-	}
-
-
-
-	async updateById(id, updateProduct) {
-		const exist = await this.exists(id);
-		if (!exist) throw new Error(`No existe item con ID ${id}`)
-
-		const productos = await this.getAll()
-		const productoId = productos.findIndex(producto => producto.id == id)
-
-		const productoViejo = productos[productoId]
-
-		const productoModificado = {
-			id: productoViejo.id,
-			title: updateProduct.title,
-			price: updateProduct.price
-		}
-
-		productos.splice(productoId, 1, productoModificado)
-
-		await this.writeProducts(productos)
-		return productoModificado
-
-	}
-
-	// deleteById(Number): void - Elimina del archivo el objeto con el id buscado.
-	async deleteById(id) {
-		const data = await this.readFileFn()
-
-		const productoId = data.findIndex((producto) => producto.id === id);
-
-		if (productoId < 0) {
-			throw new Error('El producto no existe');
-		}
-
-		data.splice(productoId, 1);
-
-		await this.writeProducts(data)
-
-	}
-
-	async deleteAll() {
-		await this.writeProducts([])
-	}
+            return `Se elimino el producto con el id: ${id}`
+        }
+    }
 }
-
-/* const data1 = new Contenedor(filePath); */
-
-//obtener producto segun el ID
-/* data1.getById(1).then((val) => console.log(val)); */
-
-//borrar archivo
-/* data1.deleteAll(); */
-
-//save
-/* data1.save({ title: "lapicera", price: 222, thumbnail: "xx" });
- */
-
-
-//getAll
-/* data1.getAll().then((val) => console.log(val)); */
-
-//deleteById
-/* data1.deleteById(1); */
 
 
 const instanciaProductsApi = new Contenedor(filePath)
