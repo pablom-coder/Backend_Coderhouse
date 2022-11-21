@@ -1,18 +1,14 @@
-import server from './services/server.js';
-import {initWsServer} from './services/socket';
-import {DBase} from '../db.js'
-
-const port= 8080
-
+import server from "./services/server.js"
+import initWsServer from "./routes/socket.js"
+import { PORT } from "./config/global.js"
 
 const init = async () =>{
     try{
-        await DBase.init();
         initWsServer(server)
-        server.listen(port, () =>{
-    console.log(`Puerto levantado en : ${port}`);
-})
-    }catch (err){
+    server.listen(PORT, () =>{
+        console.log(`Server up: ${PORT}`)
+})}
+    catch (err){
         console.log(err)
     }
 }

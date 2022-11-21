@@ -47,12 +47,9 @@ const addTableProduct = (data) =>{
     trInput.appendChild(tdImage)
     tdImage.appendChild(image)
 
-
     TBODY.appendChild(trInput)
-
-
-
 }
+
 socket.on('addTable',(data) =>{
     addTableProduct(data)
 })
