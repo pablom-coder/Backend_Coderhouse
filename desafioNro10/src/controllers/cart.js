@@ -159,21 +159,23 @@ export const deleteProductInCartById = async (req, res) => {
     const cartId = req.params.id;
     const productId = req.params.id_prod;
     const cart = await CartModel.findById(cartId);
-
+    //let cart = await CartModel.findOne({ id: cartId });
+    console.log('id cart parametro', cartId)
     if (cart === null) {
       throw new Error("No existe el carrito seleccionado");
     }
-    const products = cart.products
-    const newProducts = products.filter((product) => product.id !== productId);
+    
+    let products = cart.products;
+    const newProducts = products.filter((element) => element._id != productId);
 
     console.log('idprodu', productId)
 
-    cart.products = newProducts
-    console.log('id cart', cart.id);
+    products = newProducts;
+    console.log('id cart', cart._id);
     console.log('new producs', newProducts)
-    const addproduct = await CartModel.findByIdAndUpdate(cart.id, {cart}
-           //{new: true}
-    );
+    const addproduct = await CartModel.findByIdAndUpdate(cart._id, {
+      products,
+    });
 
     return res.status(201).json({
       mensaje: "producto eliminado del carrito con exito",
