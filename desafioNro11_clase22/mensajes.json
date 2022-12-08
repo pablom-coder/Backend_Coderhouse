@@ -1,0 +1,53 @@
+[
+	{
+		"_id": "638f61f61de6f94dd45e02a6",
+		"author": {
+			"nombre": "xxxxx",
+			"apellido": "xxx",
+			"edad": 16,
+			"alias": "xxxxxxxx",
+			"avatar": "https://i.pinimg.com/originals/2a/e4/18/2ae41863937aae47ea8c2f208b7fde49.jpg",
+			"email": "xxxx@gmail.com"
+		},
+		"text": "hola que tal?"
+	},
+	{
+		"_id": "638f61f61de6f94dd45e02a7",
+		"author": {
+			"nombre": "Pedro",
+			"apellido": "Alfonzo",
+			"edad": 18,
+			"alias": "ElPP",
+			"avatar": "https://64.media.tumblr.com/1a4e562eff1696c8e51da851435ec3e3/d0eabee945bac462-82/s540x810/976160f2bd715c67b48cb99b0eaa32d86fdf5bc0.pnj",
+			"email": "PP@gmail.com"
+		},
+		"text": "hola que tal?"
+	},
+	{
+		"_id": "638f72830fef1e7d26406e62",
+		"author": {
+			"email": "pedro@gmail.com",
+			"nombre": "Pedro",
+			"apellido": "Ferro",
+			"edad": 17,
+			"alias": "L4",
+			"avatar": "https://i.pinimg.com/originals/2a/e4/18/2ae41863937aae47ea8c2f208b7fde49.jpg"
+		},
+		"text": "Hola esta es mi segunda prueba",
+		"__v": 0
+	},
+	{
+		"_id": "638f728b7662460a0579d157",
+		"author": {
+			"email": "pedro@gmail.com",
+			"nombre": "Pedro",
+			"apellido": "Ferro",
+			"edad": 17,
+			"alias": "L4",
+			"avatar": "https://i.pinimg.com/originals/2a/e4/18/2ae41863937aae47ea8c2f208b7fde49.jpg"
+		},
+		"text": "necesito ver los mensajes",
+		"__v": 0
+	}
+]
+
