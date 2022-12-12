@@ -5,7 +5,7 @@ export const messagesCollectionName = "mensajes";
 
 export const messagesSchema = new mongoose.Schema({
   //author: { type: authorsSchema, required: true },
-  autores: { type: authorsSchema, required: true },
+  author: { type: authorsSchema, required: true },
   text: { type: String, required: true },
 });
 

@@ -1,33 +1,32 @@
 import { MessagesModel } from "../models/messages.js";
 import { normalize, denormalize, schema } from "normalizr";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const autores = new schema.Entity("autores", {}, { idAttribute: "id" });
+const mensajes = path.join(__dirname, '../data/mensajes.json');
+const mensajesNormalizados = path.join(__dirname, '../data/mensajesNormalizados.json');
+const mensajesDenormalizados = path.join(__dirname, '../data/mensajesDenormalizados.json');
 
-const msg = new schema.Entity(
-  //"message",
-  "mensajes",
-  {
-    autores: autores,
-    //author: author,
-  },
-  { idAttribute: "_id" }
+const autores = new schema.Entity("author", {}, { idAttribute: "id" });
+
+const msg = new schema.Entity("messages", {author: autores}
 );
 
-const msgsSchema = new schema.Array(msg);
+const msgsSchema = new schema.Array({
+  author: autores,
+  text: [msg]
+})
 
 export const AllMessages = async (req, res) => {
   try {
-    const Messages = await MessagesModel.find().lean();
-
-    if (!Messages) {
-      return res.status(400).json({
-        mensaje: "No hay mensajes para mostrar",
-      });
-    } else {
+      const mjes = fs.readFileSync(mensajes, 'utf-8');
+      const allMje = JSON.parse(mjes);
       return res.status(200).json({
-        data: Messages,
+        data: allMje,
       });
-    }
   } catch (error) {
     res.status(500).json({
       error: error.message,
@@ -38,12 +37,13 @@ export const AllMessages = async (req, res) => {
 
 export const NormalizedMessages = async (req, res) => {
   try {
-    const messagesOriginalData = await MessagesModel.find().lean();
-
-    let normalizedMessages = normalize(messagesOriginalData, msgsSchema);
+    const mjes = fs.readFileSync(mensajes, 'utf-8');
+    const messagesOriginal = JSON.parse(mjes);
+    const dataNormalizada = normalize(messagesOriginal, msgsSchema);
+    fs.writeFileSync(mensajesNormalizados, JSON.stringify(dataNormalizada, null, '\t'))
 
     return res.status(200).json({
-      data: normalizedMessages,
+      data: dataNormalizada,
     });
   } catch (error) {
     res.status(500).json({
@@ -55,7 +55,8 @@ export const NormalizedMessages = async (req, res) => {
 
 export const DenormalizedMessages = async (req, res) => {
   try {
-    const messagesOriginalData = await MessagesModel.find().lean();
+    const mjes = fs.readFileSync(mensajes, 'utf-8');
+      const messagesOriginalData = JSON.parse(mjes);
 
     let normalizedMessages = normalize(messagesOriginalData, msgsSchema);
 
@@ -64,6 +65,8 @@ export const DenormalizedMessages = async (req, res) => {
       msgsSchema,
       normalizedMessages.entities
     );
+
+    fs.writeFileSync(mensajesDenormalizados, JSON.stringify(denormalizedData, null, '\t'));
 
     return res.status(200).json({
       data: denormalizedData,

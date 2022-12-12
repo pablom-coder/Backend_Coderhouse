@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const connectionString =
+const connectionString = 
   process.env.MONGO_ATLAS || "mongodb://localhost:27017/coderhouse";
 
 export const initMongoDB = async () => {
