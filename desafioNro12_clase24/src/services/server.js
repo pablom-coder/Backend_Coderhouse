@@ -8,13 +8,13 @@ const ttlSeconds = 6000;
 
 const StoreOptions = {
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_ATLAS || "mongodb://localhost:27017/coderhouse",
+    mongoUrl: "mongodb+srv://admin:admin@cluster0.hkqtuzz.mongodb.net/coderhouse?retryWrites=true&w=majority",//process.env.MONGO_ATLAS || "mongodb://localhost:27017/coderhouse"
   }),
   secret: 'secretString', 
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: ttlSeconds * 1000,
+    maxAge: ttlSeconds * 10000,
   },
 };
 
