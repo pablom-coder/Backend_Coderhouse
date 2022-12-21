@@ -1,0 +1,24 @@
+variable conexion
+MONGO_ATLAS
+
+ Documentación para consultar los endpoint. 
+
+-----  /api/login  ------
+
+/signUp: pasamos por body email y password. Se guarda en mongoDB con password encriptada. Devuelve "SIGNUP OK".
+
+{
+    "username": "pablomanrique@gmail.com",
+    "password": "6789"
+}
+
+/logIn: pasamos por body email y password. Compara password encriptada. Devuelve "Bienvenido (username)".
+
+{
+    "username": "pablomanrique@gmail.com",
+    "password": "6789"
+}
+
+/home: devuelve cookie y _id (mongo) del usuario logueado.
+
+/logout: Devuelve Hasta luego! cierra sesion.
