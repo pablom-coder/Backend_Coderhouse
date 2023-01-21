@@ -1,0 +1,5 @@
+[2023-01-19T18:52:53.358] [ERROR] loggerError - Ruta: /favicon.ico Metodo: GET
+[2023-01-20T18:56:21.584] [ERROR] loggerError - Ruta: /HNAP1/ Metodo: GET
+[2023-01-20T18:56:46.544] [ERROR] loggerError - Ruta: /requested.html Metodo: GET
+[2023-01-21T18:36:27.052] [ERROR] loggerError - Ruta: /HNAP1/ Metodo: GET
+[2023-01-21T18:36:52.997] [ERROR] loggerError - Ruta: /requested.html Metodo: GET

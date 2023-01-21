@@ -1,0 +1,36 @@
+{
+  "name": "desafio16",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "start:fork": "node ./src/index.js --puerto=8081",
+    "start:cluster": "node ./src/index.js --puerto=8082 --cluster",
+    "start:profilling": "node --prof src/index.js",
+    "start:profillingProcess": "node --prof-process isolate.log > isolate.txt",
+    "start:inspect": "node --inspect ./src/index.js",
+    "artillery:fork": "artillery quick --count 50 -n 20 http://localhost:8081/info > result_profilling.txt",
+    "artillery:cluster": "artillery quick --count 50 -n 20 http://localhost:8082/info",
+    "autocannon": "autocannon -c 100 -d 20 'http://localhost:8080/info'",
+    "start:0x": "0x ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autocannon": "^7.10.0",
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "forever": "^0.14.2",
+    "log4js": "^6.7.1",
+    "minimist": "^1.2.7"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
