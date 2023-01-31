@@ -9,5 +9,6 @@ import {
 router.get("/all", AllMessages);
 router.get("/normalizar", NormalizedMessages);
 router.get("/desnormalizar", DenormalizedMessages);
-
+/* 
+.- */
 export default router;

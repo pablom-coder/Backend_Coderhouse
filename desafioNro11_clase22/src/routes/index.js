@@ -5,6 +5,7 @@ import messagesRouter from "./messages.js";
 const router = Router();
 
 router.use("/productos", productsRouter);
+
 router.use("/mensajes", messagesRouter);
 
 export default router;
