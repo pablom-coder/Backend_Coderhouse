@@ -1,0 +1,213 @@
+[2023-02-06T20:08:56.202] [ERROR] loggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1532:34)
+    at TLSSocket.emit (node:events:527:28)
+    at TLSSocket._finishInit (node:_tls_wrap:946:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:727:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-02-06T20:10:22.640] [ERROR] loggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1532:34)
+    at TLSSocket.emit (node:events:527:28)
+    at TLSSocket._finishInit (node:_tls_wrap:946:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:727:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-02-06T20:12:40.498] [ERROR] loggerError - LogIn datos incorrectos
+[2023-02-06T20:44:01.942] [ERROR] loggerError - Error al guardar ReferenceError: res is not defined
+    at save (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:54:9)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at isLoggedIn (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/middlewares/userAutenticated.js:4:5)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:346:12)
+[2023-02-06T20:44:01.953] [ERROR] loggerError - Error al crear producto Error: productos validation failed: stock: Path `stock` is required.
+    at ValidationError.inspect (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:782:19)
+    at inspect (node:internal/util/inspect:347:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2167:40)
+    at Object.format (node:internal/util/inspect:2021:10)
+    at basicLayout (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    stock: ValidatorError: Path `stock` is required.
+        at validate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaNumber.SchemaType.doValidate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\document.js:2903:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'productos validation failed'
+}
+[2023-02-06T20:46:41.416] [ERROR] loggerError - Error al guardar ReferenceError: res is not defined
+    at save (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:54:9)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at isLoggedIn (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/middlewares/userAutenticated.js:4:5)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:346:12)
+[2023-02-06T20:46:41.419] [ERROR] loggerError - Error al crear producto Error: productos validation failed: stock: Path `stock` is required.
+    at ValidationError.inspect (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:782:19)
+    at inspect (node:internal/util/inspect:347:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2167:40)
+    at Object.format (node:internal/util/inspect:2021:10)
+    at basicLayout (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    stock: ValidatorError: Path `stock` is required.
+        at validate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaNumber.SchemaType.doValidate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\document.js:2903:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'productos validation failed'
+}
+[2023-02-06T20:50:56.431] [ERROR] loggerError - Error al guardar ReferenceError: res is not defined
+    at save (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:54:9)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at isLoggedIn (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/middlewares/userAutenticated.js:4:5)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:346:12)
+[2023-02-06T20:50:56.472] [ERROR] loggerError - Error al crear producto Error: productos validation failed: stock: Path `stock` is required.
+    at ValidationError.inspect (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:782:19)
+    at inspect (node:internal/util/inspect:347:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2167:40)
+    at Object.format (node:internal/util/inspect:2021:10)
+    at basicLayout (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    stock: ValidatorError: Path `stock` is required.
+        at validate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaNumber.SchemaType.doValidate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\document.js:2903:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'productos validation failed'
+}
+[2023-02-06T20:58:34.189] [ERROR] loggerError - Error al crear producto Error: productos validation failed: price: Path `price` (2000) is more than maximum allowed value (1000).
+    at ValidationError.inspect (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:782:19)
+    at inspect (node:internal/util/inspect:347:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2167:40)
+    at Object.format (node:internal/util/inspect:2021:10)
+    at basicLayout (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    price: ValidatorError: Path `price` (2000) is more than maximum allowed value (1000).
+        at validate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaNumber.SchemaType.doValidate (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\mongoose\lib\document.js:2903:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'max',
+      path: 'price',
+      value: 2000,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'productos validation failed'
+}
+[2023-02-06T21:19:41.661] [ERROR] loggerError - Error al traer prod por id ReferenceError: ProductModel is not defined
+    at getById (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:30:26)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at isLoggedIn (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/middlewares/userAutenticated.js:4:5)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:284:15
+    at param (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:365:14)
+[2023-02-06T21:20:43.513] [ERROR] loggerError - Error al traer prod por id ReferenceError: ProductModel is not defined
+    at getById (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:30:26)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at isLoggedIn (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/middlewares/userAutenticated.js:4:5)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\layer.js:95:5)
+    at E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:284:15
+    at param (E:\CODERHOUSE\BACKEND\Desafios\Desafio\desafioNro18_clase36\node_modules\express\lib\router\index.js:365:14)
+[2023-02-06T21:23:16.622] [ERROR] loggerError - Error al actualizar ReferenceError: data is not defined
+    at update (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:99:18)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2023-02-06T21:25:03.444] [ERROR] loggerError - Error al actualizar ReferenceError: data is not defined
+    at update (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/productos.js:99:18)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2023-02-06T21:30:45.828] [ERROR] loggerError - Error al crear carrito ReferenceError: cartId is not defined
+    at createCart (file:///E:/CODERHOUSE/BACKEND/Desafios/Desafio/desafioNro18_clase36/src/controllers/cart.js:19:18)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2023-02-06T21:59:28.527] [ERROR] loggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1532:34)
+    at TLSSocket.emit (node:events:527:28)
+    at TLSSocket._finishInit (node:_tls_wrap:946:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:727:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-02-06T22:22:53.862] [ERROR] loggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1532:34)
+    at TLSSocket.emit (node:events:527:28)
+    at TLSSocket._finishInit (node:_tls_wrap:946:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:727:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-02-06T23:23:10.406] [ERROR] loggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1532:34)
+    at TLSSocket.emit (node:events:527:28)
+    at TLSSocket._finishInit (node:_tls_wrap:946:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:727:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
